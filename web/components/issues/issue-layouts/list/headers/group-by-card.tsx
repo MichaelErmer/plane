@@ -64,75 +64,73 @@ export const HeaderGroupByCard = observer(
     };
 
     return (
-      <>
-        <div className="relative flex w-full flex-shrink-0 flex-row items-center gap-2 py-1.5">
-          <div className="flex h-5 w-5 flex-shrink-0 items-center justify-center overflow-hidden rounded-sm">
-            {icon ? icon : <CircleDashed className="h-3.5 w-3.5" strokeWidth={2} />}
-          </div>
+      <div className="relative flex w-full flex-shrink-0 flex-row items-center gap-2 py-1.5">
+        <div className="flex h-5 w-5 flex-shrink-0 items-center justify-center overflow-hidden rounded-sm">
+          {icon ? icon : <CircleDashed className="h-3.5 w-3.5" strokeWidth={2} />}
+        </div>
 
-          <div className="relative flex w-full flex-row items-center gap-1 overflow-hidden">
-            <div className="inline-block line-clamp-1 truncate font-medium text-custom-text-100">{title}</div>
-            <div className="pl-2 text-sm font-medium text-custom-text-300">{count || 0}</div>
-          </div>
+        <div className="relative flex w-full flex-row items-center gap-1 overflow-hidden">
+          <div className="inline-block line-clamp-1 truncate font-medium text-custom-text-100">{title}</div>
+          <div className="pl-2 text-sm font-medium text-custom-text-300">{count || 0}</div>
+        </div>
 
-          {!disableIssueCreation &&
-            (renderExistingIssueModal ? (
-              <CustomMenu
-                customButton={
-                  <span className="flex h-5 w-5 flex-shrink-0 cursor-pointer items-center justify-center overflow-hidden rounded-sm transition-all hover:bg-custom-background-80">
-                    <Plus className="h-3.5 w-3.5" strokeWidth={2} />
-                  </span>
-                }
-              >
-                <CustomMenu.MenuItem
-                  onClick={() => {
-                    setTrackElement("List layout");
-                    setIsOpen(true);
-                  }}
-                >
-                  <span className="flex items-center justify-start gap-2">Create issue</span>
-                </CustomMenu.MenuItem>
-                <CustomMenu.MenuItem
-                  onClick={() => {
-                    setTrackElement("List layout");
-                    setOpenExistingIssueListModal(true);
-                  }}
-                >
-                  <span className="flex items-center justify-start gap-2">Add an existing issue</span>
-                </CustomMenu.MenuItem>
-              </CustomMenu>
-            ) : (
-              <div
-                className="flex h-5 w-5 flex-shrink-0 cursor-pointer items-center justify-center overflow-hidden rounded-sm transition-all hover:bg-custom-background-80"
+        {!disableIssueCreation &&
+          (renderExistingIssueModal ? (
+            <CustomMenu
+              customButton={
+                <span className="flex h-5 w-5 flex-shrink-0 cursor-pointer items-center justify-center overflow-hidden rounded-sm transition-all hover:bg-custom-background-80">
+                  <Plus className="h-3.5 w-3.5" strokeWidth={2} />
+                </span>
+              }
+            >
+              <CustomMenu.MenuItem
                 onClick={() => {
                   setTrackElement("List layout");
                   setIsOpen(true);
                 }}
               >
-                <Plus width={14} strokeWidth={2} />
-              </div>
-            ))}
+                <span className="flex items-center justify-start gap-2">Create issue</span>
+              </CustomMenu.MenuItem>
+              <CustomMenu.MenuItem
+                onClick={() => {
+                  setTrackElement("List layout");
+                  setOpenExistingIssueListModal(true);
+                }}
+              >
+                <span className="flex items-center justify-start gap-2">Add an existing issue</span>
+              </CustomMenu.MenuItem>
+            </CustomMenu>
+          ) : (
+            <div
+              className="flex h-5 w-5 flex-shrink-0 cursor-pointer items-center justify-center overflow-hidden rounded-sm transition-all hover:bg-custom-background-80"
+              onClick={() => {
+                setTrackElement("List layout");
+                setIsOpen(true);
+              }}
+            >
+              <Plus width={14} strokeWidth={2} />
+            </div>
+          ))}
 
-          <CreateUpdateIssueModal
-            isOpen={isOpen}
-            onClose={() => setIsOpen(false)}
-            data={issuePayload}
-            storeType={storeType}
-            isDraft={isDraftIssue}
+        <CreateUpdateIssueModal
+          isOpen={isOpen}
+          onClose={() => setIsOpen(false)}
+          data={issuePayload}
+          storeType={storeType}
+          isDraft={isDraftIssue}
+        />
+
+        {renderExistingIssueModal && (
+          <ExistingIssuesListModal
+            workspaceSlug={workspaceSlug?.toString()}
+            projectId={projectId?.toString()}
+            isOpen={openExistingIssueListModal}
+            handleClose={() => setOpenExistingIssueListModal(false)}
+            searchParams={ExistingIssuesListModalPayload}
+            handleOnSubmit={handleAddIssuesToView}
           />
-
-          {renderExistingIssueModal && (
-            <ExistingIssuesListModal
-              workspaceSlug={workspaceSlug?.toString()}
-              projectId={projectId?.toString()}
-              isOpen={openExistingIssueListModal}
-              handleClose={() => setOpenExistingIssueListModal(false)}
-              searchParams={ExistingIssuesListModalPayload}
-              handleOnSubmit={handleAddIssuesToView}
-            />
-          )}
-        </div>
-      </>
+        )}
+      </div>
     );
   }
 );

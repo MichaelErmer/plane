@@ -144,7 +144,7 @@ export const KanbanGroup = (props: IKanbanGroup) => {
             {provided.placeholder}
 
             {enableQuickIssueCreate && !disableIssueCreation && (
-              <div className="w-full bg-custom-background-90 py-0.5 sticky bottom-0">
+              <div className="w-full py-0.5 sticky bottom-0">
                 <KanBanQuickAddIssueForm
                   formKey="name"
                   groupId={groupId}

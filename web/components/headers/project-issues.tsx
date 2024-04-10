@@ -117,7 +117,7 @@ export const ProjectIssuesHeader: React.FC = observer(() => {
         projectDetails={currentProjectDetails ?? undefined}
       />
       <div className="relative z-[15] items-center gap-x-2 gap-y-4">
-        <div className="flex items-center gap-2 p-4 bg-custom-sidebar-background-100">
+        <div className="flex items-center gap-2 p-4 bg-custom-sidebar-background-90">
           <div className="flex w-full flex-grow items-center gap-2 overflow-ellipsis whitespace-nowrap">
             <div className="flex items-center gap-2.5">
               <Breadcrumbs onBack={() => router.back()}>

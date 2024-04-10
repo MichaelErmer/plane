@@ -178,8 +178,8 @@ const SubGroupSwimlane: React.FC<ISubGroupSwimlane> = observer((props) => {
           if (subGroupByVisibilityToggle.showGroup === false) return <></>;
           return (
             <div key={_list.id} className="flex flex-shrink-0 flex-col">
-              <div className="sticky top-[50px] z-[1] flex w-full items-center bg-custom-background-90 py-1">
-                <div className="sticky left-0 flex-shrink-0 bg-custom-background-90 pr-2">
+              <div className="sticky top-[50px] z-[1] flex w-full items-center py-1">
+                <div className="sticky left-0 flex-shrink-0 pr-2">
                   <HeaderSubGroupByCard
                     column_id={_list.id}
                     icon={_list.Icon}
@@ -311,7 +311,7 @@ export const KanBanSwimLanes: React.FC<IKanBanSwimLanes> = observer((props) => {
 
   return (
     <div className="relative">
-      <div className="sticky top-0 z-[2] h-[50px] bg-custom-background-90">
+      <div className="sticky top-0 z-[2] h-[50px] bg-custom-background-100">
         <SubGroupSwimlaneHeader
           issueIds={issueIds}
           group_by={group_by}

@@ -45,14 +45,14 @@ export const InstanceHelpSection: FC = () => {
 
   return (
     <div
-      className={`flex w-full items-center justify-between gap-1 self-baseline border-t border-custom-border-200 bg-custom-sidebar-background-100 px-4 py-2 ${
+      className={`flex w-full items-center justify-between gap-1 self-baseline border-t border-custom-border-200 bg-custom-sidebar-background-90 px-4 py-2 ${
         sidebarCollapsed ? "flex-col" : ""
       }`}
     >
       <div className={`flex items-center gap-1 ${sidebarCollapsed ? "flex-col justify-center" : "w-full justify-end"}`}>
         <button
           type="button"
-          className={`grid place-items-center rounded-md p-1.5 text-custom-text-200 outline-none hover:bg-custom-background-90 hover:text-custom-text-100 ${
+          className={`grid place-items-center rounded-md p-1.5 text-custom-text-200 outline-none hover:bg-custom-background-80 hover:text-custom-text-100 ${
             sidebarCollapsed ? "w-full" : ""
           }`}
           onClick={() => setIsNeedHelpOpen((prev) => !prev)}
@@ -61,14 +61,14 @@ export const InstanceHelpSection: FC = () => {
         </button>
         <button
           type="button"
-          className="grid place-items-center rounded-md p-1.5 text-custom-text-200 outline-none hover:bg-custom-background-90 hover:text-custom-text-100 md:hidden"
+          className="grid place-items-center rounded-md p-1.5 text-custom-text-200 outline-none hover:bg-custom-background-80 hover:text-custom-text-100 md:hidden"
           onClick={() => toggleSidebar()}
         >
           <MoveLeft className="h-3.5 w-3.5" />
         </button>
         <button
           type="button"
-          className={`hidden place-items-center rounded-md p-1.5 text-custom-text-200 outline-none hover:bg-custom-background-90 hover:text-custom-text-100 md:grid ${
+          className={`hidden place-items-center rounded-md p-1.5 text-custom-text-200 outline-none hover:bg-custom-background-80 hover:text-custom-text-100 md:grid ${
             sidebarCollapsed ? "w-full" : ""
           }`}
           onClick={() => toggleSidebar()}

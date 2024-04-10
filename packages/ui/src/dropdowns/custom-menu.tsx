@@ -137,9 +137,13 @@ const CustomMenu = (props: ICustomMenuDropdownProps) => {
                       if (menuButtonOnClick) menuButtonOnClick();
                     }}
                     disabled={disabled}
-                    className={`relative grid place-items-center rounded p-1 text-custom-text-200 outline-none hover:text-custom-text-100 ${
-                      disabled ? "cursor-not-allowed" : "cursor-pointer hover:bg-custom-background-80"
-                    } ${buttonClassName}`}
+                    className={cn(
+                      "relative grid place-items-center rounded p-1 text-custom-text-200 outline-none hover:text-custom-text-100 cursor-not-allowed",
+                      {
+                        "cursor-pointer hover:bg-custom-background-90": !disabled,
+                      },
+                      buttonClassName
+                    )}
                     tabIndex={customButtonTabIndex}
                   >
                     <MoreHorizontal className={`h-3.5 w-3.5 ${verticalEllipsis ? "rotate-90" : ""}`} />
@@ -150,13 +154,16 @@ const CustomMenu = (props: ICustomMenuDropdownProps) => {
                   <button
                     ref={setReferenceElement}
                     type="button"
-                    className={`flex items-center justify-between gap-1 whitespace-nowrap rounded-md px-2.5 py-1 text-xs duration-300 ${
-                      open ? "bg-custom-background-90 text-custom-text-100" : "text-custom-text-200"
-                    } ${noBorder ? "" : "border border-custom-border-300 shadow-sm focus:outline-none"} ${
-                      disabled
-                        ? "cursor-not-allowed text-custom-text-200"
-                        : "cursor-pointer hover:bg-custom-background-80"
-                    } ${buttonClassName}`}
+                    className={cn(
+                      "flex items-center justify-between gap-1 whitespace-nowrap rounded-md px-2.5 py-1 text-xs duration-300 text-custom-text-200",
+                      {
+                        "border border-custom-border-300 shadow-sm focus:outline-none": !noBorder,
+                        "bg-custom-background-90 text-custom-text-100": open,
+                        "cursor-not-allowed text-custom-text-200": disabled,
+                        "cursor-pointer hover:bg-custom-background-90": !disabled,
+                      },
+                      buttonClassName
+                    )}
                     onClick={(e) => {
                       e.preventDefault();
                       e.stopPropagation();
@@ -190,7 +197,7 @@ const MenuItem: React.FC<ICustomMenuItemProps> = (props) => {
           className={cn(
             "w-full select-none truncate rounded px-1 py-1.5 text-left text-custom-text-200",
             {
-              "bg-custom-background-80": active && !disabled,
+              "bg-custom-background-90": active && !disabled,
               "text-custom-text-400": disabled,
             },
             className

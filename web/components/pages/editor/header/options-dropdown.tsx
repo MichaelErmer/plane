@@ -161,12 +161,17 @@ export const PageOptionsDropdown: React.FC<Props> = observer((props) => {
         Full width
         <ToggleSwitch value={!!view_props?.full_width} onChange={() => {}} />
       </CustomMenu.MenuItem>
+      <hr className="my-2 border-custom-border-300" />
       {MENU_ITEMS.map((item) => {
         if (!item.shouldRender) return null;
         return (
-          <CustomMenu.MenuItem key={item.key} onClick={item.action} className="flex items-center gap-2">
+          <CustomMenu.MenuItem
+            key={item.key}
+            onClick={item.action}
+            className="flex items-center gap-2 text-custom-text-200"
+          >
             <item.icon className="h-3 w-3" />
-            <div className="text-custom-text-300">{item.label}</div>
+            <span>{item.label}</span>
           </CustomMenu.MenuItem>
         );
       })}
